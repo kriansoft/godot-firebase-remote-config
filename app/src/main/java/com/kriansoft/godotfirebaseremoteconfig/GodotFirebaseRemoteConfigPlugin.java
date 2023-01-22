@@ -2,8 +2,8 @@ package com.kriansoft.godotfirebaseremoteconfig;
 
 import androidx.annotation.NonNull;
 
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 
 import org.godotengine.godot.Godot;
 import org.godotengine.godot.plugin.GodotPlugin;
@@ -43,6 +43,11 @@ public class GodotFirebaseRemoteConfigPlugin extends GodotPlugin {
     }
 
     @UsedByGodot
+    public long getLong(final String key) {
+        return config.getLong(key);
+    }
+
+    @UsedByGodot
     public double getDouble(final String key) {
         return config.getDouble(key);
     }
@@ -57,13 +62,11 @@ public class GodotFirebaseRemoteConfigPlugin extends GodotPlugin {
     }
 
     private FirebaseRemoteConfig createConfig() {
-        return FirebaseRemoteConfig.getInstance();
-        /*
+        final FirebaseRemoteConfig currentConfig = FirebaseRemoteConfig.getInstance();
         final FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
                 .setMinimumFetchIntervalInSeconds(3600)
-                //.setMinimumFetchIntervalInSeconds(10)
                 .build();
-        config.setConfigSettingsAsync(configSettings).addOnCompleteListener(task -> config.fetchAndActivate());
-         */
+        currentConfig.setConfigSettingsAsync(configSettings);
+        return currentConfig;
     }
 }
