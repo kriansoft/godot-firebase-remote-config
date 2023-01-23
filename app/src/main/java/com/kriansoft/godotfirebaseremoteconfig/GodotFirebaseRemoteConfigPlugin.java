@@ -43,13 +43,13 @@ public class GodotFirebaseRemoteConfigPlugin extends GodotPlugin {
     }
 
     @UsedByGodot
-    public long getLong(final String key) {
-        return config.getLong(key);
+    public int getLong(final String key) {
+        return (int)config.getLong(key);
     }
 
     @UsedByGodot
-    public double getDouble(final String key) {
-        return config.getDouble(key);
+    public float getDouble(final String key) {
+        return (float)config.getDouble(key);
     }
 
     @NonNull
