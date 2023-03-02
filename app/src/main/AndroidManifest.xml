@@ -6,6 +6,8 @@
         <meta-data
             android:name="org.godotengine.plugin.v1.GodotFirebaseRemoteConfig"
             android:value="com.kriansoft.godotfirebaseremoteconfig.GodotFirebaseRemoteConfigPlugin" />
+        <meta-data android:name="google_analytics_adid_collection_enabled" android:value="false" />
+        <meta-data android:name="google_analytics_ssaid_collection_enabled" android:value="false" />
     </application>
 
 </manifest>
